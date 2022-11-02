@@ -1,0 +1,175 @@
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url("/fonts/Pokemon\ Solid.ttf");
+  }
+@font-face {
+    font-family: 'GodOfWar';
+    src: url("/fonts/GODOFWAR.TTF");
+  }
+@font-face {
+    font-family: 'Halo';
+    src: url("/fonts/Halo.ttf");
+  }
+
+
+body {
+    background-image: url("images/background/bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: aliceblue !important;
+}
+
+h1 {
+    color: hsl(55, 90%, 51%);
+    font-family: 'Pokemon Solid' !important;
+    font-size: 33px !important;
+    padding: 25px;
+    letter-spacing: 6px;
+    text-shadow: 0 0 0.08em blue, 0 0 0.3em blue, 0 0 0.02em blue;
+}
+
+div.inp_data div, .srch {
+    font-family: 'GodOfWar' !important;
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+div.inp_data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+div.inp {
+    width: 30%;
+    margin-top: 4px;
+}
+    div.inp_data div.inp, .srch {
+        border: 2px groove hsla(208, 17%, 78%, 0.832);
+        border-radius: 10px;
+        border-top-width: 4px;
+        border-bottom-width: 4px;
+        box-shadow: 1px 2px 2px 0px hsla(210, 45%, 69%, 0.579), -2px 0px 4px 4px hsla(210, 45%, 69%, 0.579) inset;
+        background-color: rgba(191, 213, 213, 0.118);
+        transition: transform 0.4s;
+    }
+    div.inp_data div:hover{
+        background-color: rgba(191, 213, 213, 0.33);
+        transform: scale(1.05);
+    }
+    #search {
+        letter-spacing: 3px;
+        font-size: 16px;
+        border-radius: 17px;
+        background-color: hsla(151, 84%, 38%, 0.896);
+    }
+        div #search:hover {
+            transition: none;
+            transform: translateY(-3px);
+            box-shadow: 1px 0px 1px 0px hsla(210, 45%, 69%, 0.579);
+        }
+
+select option, select {
+    background-color: rgba(158, 198, 47, 0.419) !important;
+    font-family: 'GodOfWar' !important;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#poke_card {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 2px;
+    border: 2px groove black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 13px hsl(215, 35%, 17%), 0px 0px 12px 3px hsl(216, 20%, 20%), 
+                0px 0px 12px 6px hsl(216, 20%, 20%) inset;
+}
+
+#p_name {
+    width: 60%;
+    font-weight: 600;
+    font-family: 'GodOfWar' !important;
+    color: black;
+    text-shadow: 2px 2px 3px 3px black;
+    font-size: 19px !important;
+    text-decoration: underline;
+}
+
+#p_hp_div {
+    align-self: flex-end;
+    padding: 5px;
+    padding-top: 5px;
+    font-family: 'GodOfWar' !important;
+}
+
+#p_hp {
+    border: .01px groove whitesmoke;
+    background-color: whitesmoke;
+    padding: 8px;
+    border-radius: 20px;
+    color: rgba(10, 10, 28, 0.804);
+}
+
+#iname {
+    transition: width 1s, height 1s;
+    /* box-shadow: 0px 0px 1px 8px hsla(215, 36%, 17%, 0.281); */
+}
+
+#iname:hover {
+    width: 180px;
+    height: 180px;
+}
+    #img_bg {
+        padding: 5px; 
+        width: 80%;    
+    }
+
+#p_types {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+    #p_types div {
+        padding: 10px;
+        padding-top: 15px;
+        border: .01px groove hsla(208, 17%, 78%, 0.832);
+        background-color: hsla(72, 87%, 44%, 0.832);
+        padding: 10px;
+        border-radius: 20px;
+        color: rgba(10, 10, 28, 1);
+        font-weight: 900;
+        font-family: 'GodOfWar' !important;
+        font-size: 14px !important;
+    }
+
+#other_det {
+    margin-top: 5px;
+    width: 80%;
+    background: 0.4px groove black;
+    box-shadow: 0px 0px 2px 2px black;
+    border-radius: 7px;
+    font-weight: bold;
+    color: black;
+    font-family: 'GodOfWar' !important;
+    font-size: 17px !important;
+    background: linear-gradient(to right, rgb(192, 192, 170, 0.9), rgb(28, 239, 255));
+}
+    #other_det div {
+        text-shadow: 0 0 6px #af4444;
+        letter-spacing: 1px !important;
+    }
+
+
+
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pcheck_css.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="fonts/Pokemon Solid.ttf">
+
+    <!-- Bootstrap links - start -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap links - end  -->
+    <script src="./pcheck_js.js" type="module"></script>
+    <title>PokeCheck</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center d1">
+            <div class="inp_data">
+                <div class="inp">
+                    <span class="p-2">
+                        <label for="poke_gen">Select the pokemon generation</label>
+                        <select name="poke_gen" id="poke_gen" onchange="pickPoke()">
+
+                        </select>
+                    </span>
+                </div>
+                <div class="text-center">
+                    <h1>PokeCheck</h1>
+                </div>
+                <div class="inp">
+                    <span class="p-2">
+                        <label for="poke_names">Select the pokemon</label>
+                        <select name="poke_names" id="poke_names">
+                        
+                        </select> 
+                    </span>         
+                </div>
+            </div>
+            <div class="text-center p-4">
+                <button id="search"  class = "p-1 srch" onclick="finder()">Search
+                    <img src="images/psearch.png" alt="pokemon_search" height="32px" width="32px">  
+                 </button> 
+            </div>
+        </div>
+        <div class="">
+            <div id="poke_card" class="p-3">
+                <div id="p_hp_div">
+                    <span id="p_hp">
+
+                    </span>
+                </div>
+                <div id="img_bg" class="text-center">
+                    <img src="images/pokemon_images/" alt="pokemon_image" id="iname" width="160px" height="160px">
+                </div>
+                <div id="p_name" class="text-center p-2">
+
+                </div>
+                <div id="p_types">
+                    <div id="t1">
+
+                    </div>
+                    <div id="t2">
+
+                    </div>
+                </div>
+                <div id="other_det" class="text-center p-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        &nbsp;
+    </div>
+</body>
+</html>
