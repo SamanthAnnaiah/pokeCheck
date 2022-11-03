@@ -15,7 +15,8 @@ const typeColor = {
   poison: "#6c5ce7",
   psychic: "#a29bfe",
   rock: "#2d3436",
-  water: "#0190FF",
+  dark: "hsla(210, 78%, 9%, 0.601)",
+  water: "#0190FF"
 };
 
 let gens = ["Gen 1", "Gen 2", "Gen 3", "Gen 4", "Gen 5", "Gen 6"]
@@ -82,10 +83,23 @@ window.finder = function () {
     for (let f = poke_id; f < 9999; f++) {
         if (pokemon[f].name.trim() == pokename.trim()) {
 
+            let img_name = " "
             let poke_card = document.getElementById("poke_card")
             poke_card.style.visibility = "visible"
 
-            let img_name = pokemon[f].id + ".png"
+            let temp_name = pokemon[f].name.trim()
+            if (temp_name.indexOf("Mega") > 0) {
+                img_name = pokemon[f].id + "-mega" + ".png"
+                if ((temp_name.indexOf(" X") > 0) || (temp_name.indexOf("_X") > 0)) {
+                    img_name = pokemon[f].id + "-mega-x" + ".png"
+                }   
+                if ((temp_name.indexOf(" Y") > 0) || (temp_name.indexOf("_Y") > 0)) {
+                    img_name = pokemon[f].id + "-mega-y" + ".png"
+                }  
+            }
+            else {
+                img_name = pokemon[f].id + ".png"
+            }
             let img_loc = "images/pokemon_images/"
             let iname = document.getElementById("iname")
             let img_data = img_loc + img_name
