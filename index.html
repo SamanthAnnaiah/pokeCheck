@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,64 +16,72 @@
     <script src="./pcheck_js.js" type="module"></script>
     <title>PokeCheck</title>
 </head>
+
 <body>
     <div class="container">
+
+        <div class="c1">
+            <div class="c2">
+                <img src="images/pika.gif" alt="picture of pikachu" height="50px" width="50px">
+            </div>
+        </div>
+
         <div class="text-center d1">
             <div class="inp_data">
-                <div class="inp">
+                <div class="inp k1">
                     <span class="p-2">
-                        <label for="poke_gen">Select the pokemon generation</label>
+                        <label for="poke_gen" id="plabel">Select the pokemon generation</label>
                         <select name="poke_gen" id="poke_gen" onchange="pickPoke()">
 
                         </select>
                     </span>
                 </div>
-                <div class="text-center">
+                <div class="text-center k2">
                     <h1>PokeCheck</h1>
                 </div>
-                <div class="inp">
+                <div class="inp k3">
                     <span class="p-2">
-                        <label for="poke_names">Select the pokemon</label>
+                        <label for="poke_names" id="pmon">Select the pokemon</label>
                         <select name="poke_names" id="poke_names">
-                        
-                        </select> 
-                    </span>         
+
+                        </select>
+                    </span>
                 </div>
             </div>
             <div class="text-center p-4">
-                <button id="search"  class = "p-1 srch" onclick="finder()">Search
-                    <img src="images/psearch.png" alt="pokemon_search" height="32px" width="32px">  
-                 </button> 
+                <button id="search" class="p-1 srch" onclick="finder()">Search
+                    <a href="#end_doc"> <img src="images/psearch.png" alt="pokemon_search" height="32px" width="32px">
+                    </a>
+                </button>
             </div>
         </div>
-        <div class="">
-            <div id="poke_card" class="p-3">
-                <div id="p_hp_div">
-                    <span id="p_hp">
+        <div id="poke_card" class="p-3">
+            <div id="p_hp_div">
+                <span id="p_hp">
 
-                    </span>
-                </div>
-                <div id="img_bg" class="text-center">
-                    <img src="images/pokemon_images/" alt="pokemon_image" id="iname" width="160px" height="160px">
-                </div>
-                <div id="p_name" class="text-center p-2">
+                </span>
+            </div>
+            <div id="img_bg" class="text-center">
+                <img src="images/pokemon_images/" alt="pokemon_image" id="iname" width="160px" height="160px">
+            </div>
+            <div id="p_name" class="text-center p-2">
+
+            </div>
+            <div id="p_types">
+                <div id="t1">
 
                 </div>
-                <div id="p_types">
-                    <div id="t1">
+                <div id="t2">
 
-                    </div>
-                    <div id="t2">
-
-                    </div>
                 </div>
-                <div id="other_det" class="text-center p-4">
-                </div>
+            </div>
+            <div id="other_det" class="text-center p-4">
             </div>
         </div>
     </div>
-    <div>
+    <div id="end_doc">
         &nbsp;
     </div>
 </body>
+
 </html>
