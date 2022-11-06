@@ -1,4 +1,8 @@
 let poke_id = 0
+let opa_count = 0
+let opa_var = 0
+let m_card = ""
+
 const typeColor = {
   bug: "#26de81",
   dragon: "#ffeaa7",
@@ -85,7 +89,7 @@ window.finder = function () {
 
             let img_name = " "
             let poke_card = document.getElementById("poke_card")
-            poke_card.style.visibility = "visible"
+            poke_card.style.opacity = 0 
 
             let temp_name = pokemon[f].name.trim()
             if (temp_name.indexOf("Mega") > 0) {
@@ -159,6 +163,15 @@ window.finder = function () {
             }
         
             f = 10000
+            // poke_card.style.visibility = "visible"
+            opa_count = 0 
+            let opa_var = setInterval(() => {
+                            opa_count += 0.1 
+                            poke_card.style.opacity = opa_count
+                            if (opa_count > 1) {
+                                clearInterval(opa_var)
+                            }
+                        }, 50);
         }
     }
 }
