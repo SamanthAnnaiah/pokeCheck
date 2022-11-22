@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Author" content="Samanth_Annaiah">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pcheck_css.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
@@ -49,7 +50,7 @@
                 </div>
             </div>
             <div class="text-center p-4">
-                <a href="#end_doc">
+                <a href="#poke_card">
                     <button id="search" class="p-1 srch" onclick="finder()">Search
                         <img src="images/psearch.png" alt="pokemon_search" height="32px" width="32px">
                     </button>
@@ -80,8 +81,25 @@
             </div>
         </div>
     </div>
-    <div id="end_doc">
+    <div id="mid_doc">
         &nbsp;
+    </div>
+    <div id="end_doc">
+        
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div id="pages">
+        <div id="previous">
+            <img src="images/left.png" alt="left arrow" width="80px" height="80px" onclick="previousPage()">
+        </div>
+        <div>
+            <img src="images/pmid.png" alt="midarrow" width="80px" height="80px">
+        </div>
+        <div id="next">
+            <img src="images/right.png" alt="right arrow" width="80px" height="80px" onclick="nextPage()">
+        </div>
     </div>
 </body>
 

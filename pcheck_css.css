@@ -106,7 +106,8 @@ select option, select {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 28%;
+    height: 550px;
     margin: auto;
     margin-bottom: 2px;
     border: 2px groove black;
@@ -191,6 +192,60 @@ select option, select {
         letter-spacing: 1px !important;
     }
 
+div#end_doc {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+    div#end_doc div {
+        background-color: #2228313e;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 2px 3px 5px 5px rgba(0, 0, 0, 0.7);
+        color: white;
+        margin: 10px;
+    }  
+      .card__name {
+        margin-top: 15px;
+        font-size: 1em;
+        /* pokemon name width change here */
+        width: 200px; 
+        font-family: 'GodOfWar' !important;
+      } 
+      .card__image {
+        height: 120px;
+        width: 120px;
+        border-radius: 20%;
+        border: 5px solid #272133;
+        margin-top: 20px;
+        box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+        transition: width 1s, height 1s;
+      }
+
+      .card__image:hover {
+        width: 140px;
+        height: 140px;
+        
+      }
+
+div#pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+div#pages div {
+    margin: 10px;
+}
+    div#previous:hover, div#next:hover {
+        cursor: pointer !important;
+        transform: scale(1.1);
+    }
+
 @media screen and (max-width: 480px) {
     body {
         background-image: url("images/background/bg4.jpg");
@@ -240,6 +295,10 @@ select option, select {
    #poke_card {
         width: 90%;
         padding: 2px;
+   }
+
+   div#end_doc div {
+    width: 25%;
    }
 
    div.k2 {
