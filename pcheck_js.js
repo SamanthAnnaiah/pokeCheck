@@ -104,176 +104,7 @@ function loadPoke(genValue) {
 }
 
 window.finder = function () {
-    let poketemp = document.getElementById("poke_names")
-    let pokename = poketemp.value
-    for (let f = poke_id; f < 9999; f++) {
-        if (pokemon[f].name.trim() == pokename.trim()) {
-            poke_id_count += 1
-            if (poke_id_count == 1) {
-                poke_pid = f
-            }
-            let img_name = " "
-            let poke_card = document.getElementById("poke_card")
-            poke_card.style.opacity = 0
-
-            let temp_name = pokemon[f].name.trim()
-
-            if (temp_name.indexOf("Mega") > 0) {
-                img_name = pokemon[f].id + "-mega" + ".png"
-                if ((temp_name.indexOf(" X") > 0) || (temp_name.indexOf("_X") > 0)) {
-                    img_name = pokemon[f].id + "-mega-x" + ".png"
-                }
-                if ((temp_name.indexOf(" Y") > 0) || (temp_name.indexOf("_Y") > 0)) {
-                    img_name = pokemon[f].id + "-mega-y" + ".png"
-                }
-            } else {
-                img_name = pokemon[f].id + ".png"
-            }
-            let img_loc = "images/pokemon_images/"
-            let iname = document.getElementById("iname")
-            let img_data = img_loc + img_name
-            iname.setAttribute("src", img_data)
-
-            let poke_type = pokemon[f].Type1
-            poke_type = poke_type.toLowerCase()
-            let col = eval("typeColor." + poke_type)
-            let pbg = document.getElementById("poke_card")
-            pbg.style.backgroundColor = col
-
-            let poke_hp = pokemon[f].hp
-            let php = document.getElementById("p_hp")
-            php.innerText = "HP " + poke_hp
-
-            let poke_t1 = pokemon[f].Type1
-            let poke_t2 = pokemon[f].Type2
-            document.getElementById("t1").textContent = poke_t1.trim()
-            if (poke_t2 != "") {
-                document.getElementById("t2").textContent = poke_t2.trim()
-            } else {
-                let tk = document.getElementById("t2")
-                tk.style.visibility = "hidden"
-            }
-
-            let pokename = document.getElementById("p_name")
-            pokename.innerText = pokemon[f].name
-
-            let pdetails = document.getElementById("other_det")
-            pdetails.innerText = ""
-            let adiv = document.createElement("div")
-            adiv.innerText = "Attack: " + pokemon[f].Attack
-            pdetails.appendChild(adiv)
-
-            let ddiv = document.createElement("div")
-            ddiv.innerText = "Defence: " + pokemon[f].Defence
-            pdetails.appendChild(ddiv)
-
-            let spdiv = document.createElement("div")
-            spdiv.innerText = "Sp.Attack: " + pokemon[f].SpAtk
-            pdetails.appendChild(spdiv)
-
-            let sddiv = document.createElement("div")
-            sddiv.innerText = "Sp.Defence: " + pokemon[f].SpDef
-            pdetails.appendChild(sddiv)
-
-            let sediv = document.createElement("div")
-            sediv.innerText = "Speed: " + pokemon[f].Speed
-            pdetails.appendChild(sediv)
-
-            let legend_status = pokemon[f].Legend.toLowerCase()
-            if (legend_status == "true") {
-                let tldiv = document.createElement("div")
-                tldiv.innerText = "Legendary: " + pokemon[f].Legend
-                pdetails.appendChild(tldiv)
-            }
-
-            f = 10000
-            // poke_card.style.visibility = "visible"
-            opa_count = 0
-            let opa_var = setInterval(() => {
-                opa_count += 0.1
-                poke_card.style.opacity = opa_count
-                if (opa_count > 1) {
-                    clearInterval(opa_var)
-                }
-            }, 50);
-
-            let panels = document.getElementById("end_doc")
-            panels.innerHTML = ""
-            let othername = ""
-            let otherimage = ""
-            let otherloc = ""
-            let oname = ""
-            let oimage = ""
-            let pdivs = ""
-
-            let dk = genindex
-            poke_id = poke_pid
-            if (poke_pid >= 0) {
-                for (let d = genindex; d < (genindex + pstagem); d++) {
-                    if (d == genindex) {
-                        pagevisited = "Y"
-                        pagegen = pokemon[d].Gen
-                        nextpage_page_counter = 0
-                        pageindex_start = 0
-                        pageend = 0
-                        pageend_ind = "N"
-                        firstpage = 0
-                    }
-                    othername = ""
-                    otherimage = ""
-                    othername = pokemon[d].name
-                    othername = othername.trim()
-
-                    if (othername.indexOf("Mega") > 0) {
-                        otherimage = pokemon[d].id + "-mega" + ".png"
-                        if ((othername.indexOf(" X") > 0) || (othername.indexOf("_X") > 0)) {
-                            otherimage = pokemon[d].id + "-mega-x" + ".png"
-                        }
-                        if ((othername.indexOf(" Y") > 0) || (othername.indexOf("_Y") > 0)) {
-                            otherimage = pokemon[d].id + "-mega-y" + ".png"
-                        }
-                    } else {
-                        otherimage = pokemon[d].id + ".png"
-                        if (pokemon[d].id == 413) {
-                            if (pokemon[d].Type2 == "Grass") {
-                                otherimage = ""
-                                otherimage = "413-plant" + ".png"
-                            }
-                            if (pokemon[d].Type2 == "Ground") {
-                                otherimage = ""
-                                otherimage = "413-sandy" + ".png"
-                            }
-                            if (pokemon[d].Type2 == "Steel") {
-                                otherimage = ""
-                                otherimage = "413-trash" + ".png"
-                            }
-                        }
-                    }
-
-                    otherloc = ""
-                    otherloc = "images/pokemon_images/" + otherimage
-
-                    oimage = document.createElement("img")
-                    oimage.setAttribute("src", otherloc)
-                    oimage.classList.add("card__image")
-
-                    oname = document.createElement("div")
-                    oname.textContent = othername
-                    oname.classList.add("card__name")
-
-                    pdivs = ""
-                    pdivs = document.createElement("div")
-                    pdivs.setAttribute("data-toggle", "tooltip")
-                    pdivs.addEventListener('mouseover', mouseHover)
-
-                    pdivs.appendChild(oimage)
-                    pdivs.appendChild(oname)
-
-                    panels.appendChild(pdivs)
-                }
-            }
-        }
-    }
+    finderPoke();
 }
 
 window.nextPage = function () {
@@ -499,4 +330,354 @@ function mouseHover(eve) {
     }
     let divmain = eve.target
     divmain.setAttribute("title",dkit)
+}
+
+document.addEventListener("DOMContentLoaded", finderPoke_init);
+
+function finderPoke() {
+    let poketemp = document.getElementById("poke_names")
+    let pokename = poketemp.value
+    for (let f = poke_id; f < 9999; f++) {
+        if (pokemon[f].name.trim() == pokename.trim()) {
+            poke_id_count += 1
+            if (poke_id_count == 1) {
+                poke_pid = f
+            }
+            let img_name = " "
+            let poke_card = document.getElementById("poke_card")
+            poke_card.style.opacity = 0
+
+            let temp_name = pokemon[f].name.trim()
+
+            if (temp_name.indexOf("Mega") > 0) {
+                img_name = pokemon[f].id + "-mega" + ".png"
+                if ((temp_name.indexOf(" X") > 0) || (temp_name.indexOf("_X") > 0)) {
+                    img_name = pokemon[f].id + "-mega-x" + ".png"
+                }
+                if ((temp_name.indexOf(" Y") > 0) || (temp_name.indexOf("_Y") > 0)) {
+                    img_name = pokemon[f].id + "-mega-y" + ".png"
+                }
+            } else {
+                img_name = pokemon[f].id + ".png"
+            }
+            let img_loc = "images/pokemon_images/"
+            let iname = document.getElementById("iname")
+            let img_data = img_loc + img_name
+            iname.setAttribute("src", img_data)
+
+            let poke_type = pokemon[f].Type1
+            poke_type = poke_type.toLowerCase()
+            let col = eval("typeColor." + poke_type)
+            let pbg = document.getElementById("poke_card")
+            pbg.style.backgroundColor = col
+
+            let poke_hp = pokemon[f].hp
+            let php = document.getElementById("p_hp")
+            php.innerText = "HP " + poke_hp
+
+            let poke_t1 = pokemon[f].Type1
+            let poke_t2 = pokemon[f].Type2
+            document.getElementById("t1").textContent = poke_t1.trim()
+            if (poke_t2 != "") {
+                document.getElementById("t2").textContent = poke_t2.trim()
+            } else {
+                let tk = document.getElementById("t2")
+                tk.style.visibility = "hidden"
+            }
+
+            let pokename = document.getElementById("p_name")
+            pokename.innerText = pokemon[f].name
+
+            let pdetails = document.getElementById("other_det")
+            pdetails.innerText = ""
+            let adiv = document.createElement("div")
+            adiv.innerText = "Attack: " + pokemon[f].Attack
+            pdetails.appendChild(adiv)
+
+            let ddiv = document.createElement("div")
+            ddiv.innerText = "Defence: " + pokemon[f].Defence
+            pdetails.appendChild(ddiv)
+
+            let spdiv = document.createElement("div")
+            spdiv.innerText = "Sp.Attack: " + pokemon[f].SpAtk
+            pdetails.appendChild(spdiv)
+
+            let sddiv = document.createElement("div")
+            sddiv.innerText = "Sp.Defence: " + pokemon[f].SpDef
+            pdetails.appendChild(sddiv)
+
+            let sediv = document.createElement("div")
+            sediv.innerText = "Speed: " + pokemon[f].Speed
+            pdetails.appendChild(sediv)
+
+            let legend_status = pokemon[f].Legend.toLowerCase()
+            if (legend_status == "true") {
+                let tldiv = document.createElement("div")
+                tldiv.innerText = "Legendary: " + pokemon[f].Legend
+                pdetails.appendChild(tldiv)
+            }
+
+            f = 10000
+            // poke_card.style.visibility = "visible"
+            opa_count = 0
+            let opa_var = setInterval(() => {
+                opa_count += 0.1
+                poke_card.style.opacity = opa_count
+                if (opa_count > 1) {
+                    clearInterval(opa_var)
+                }
+            }, 50);
+
+            let panels = document.getElementById("end_doc")
+            panels.innerHTML = ""
+            let othername = ""
+            let otherimage = ""
+            let otherloc = ""
+            let oname = ""
+            let oimage = ""
+            let pdivs = ""
+
+            let dk = genindex
+            poke_id = poke_pid
+            if (poke_pid >= 0) {
+                for (let d = genindex; d < (genindex + pstagem); d++) {
+                    if (d == genindex) {
+                        pagevisited = "Y"
+                        pagegen = pokemon[d].Gen
+                        nextpage_page_counter = 0
+                        pageindex_start = 0
+                        pageend = 0
+                        pageend_ind = "N"
+                        firstpage = 0
+                    }
+                    othername = ""
+                    otherimage = ""
+                    othername = pokemon[d].name
+                    othername = othername.trim()
+
+                    if (othername.indexOf("Mega") > 0) {
+                        otherimage = pokemon[d].id + "-mega" + ".png"
+                        if ((othername.indexOf(" X") > 0) || (othername.indexOf("_X") > 0)) {
+                            otherimage = pokemon[d].id + "-mega-x" + ".png"
+                        }
+                        if ((othername.indexOf(" Y") > 0) || (othername.indexOf("_Y") > 0)) {
+                            otherimage = pokemon[d].id + "-mega-y" + ".png"
+                        }
+                    } else {
+                        otherimage = pokemon[d].id + ".png"
+                        if (pokemon[d].id == 413) {
+                            if (pokemon[d].Type2 == "Grass") {
+                                otherimage = ""
+                                otherimage = "413-plant" + ".png"
+                            }
+                            if (pokemon[d].Type2 == "Ground") {
+                                otherimage = ""
+                                otherimage = "413-sandy" + ".png"
+                            }
+                            if (pokemon[d].Type2 == "Steel") {
+                                otherimage = ""
+                                otherimage = "413-trash" + ".png"
+                            }
+                        }
+                    }
+
+                    otherloc = ""
+                    otherloc = "images/pokemon_images/" + otherimage
+
+                    oimage = document.createElement("img")
+                    oimage.setAttribute("src", otherloc)
+                    oimage.classList.add("card__image")
+
+                    oname = document.createElement("div")
+                    oname.textContent = othername
+                    oname.classList.add("card__name")
+
+                    pdivs = ""
+                    pdivs = document.createElement("div")
+                    pdivs.setAttribute("data-toggle", "tooltip")
+                    pdivs.addEventListener('mouseover', mouseHover)
+
+                    pdivs.appendChild(oimage)
+                    pdivs.appendChild(oname)
+
+                    panels.appendChild(pdivs)
+                }
+            }
+        }
+    }
+}
+
+function finderPoke_init() {
+    let poketemp = document.getElementById("poke_names")
+    let pokename = poketemp.value
+    pokename = "Bulbasaur";
+    poke_id = 0;
+    for (let f = poke_id; f < 9999; f++) {
+        if (pokemon[f].name.trim() == pokename.trim()) {
+            poke_id_count += 1
+            if (poke_id_count == 1) {
+                poke_pid = f
+            }
+            let img_name = " "
+            let poke_card = document.getElementById("poke_card")
+            poke_card.style.opacity = 0
+
+            let temp_name = pokemon[f].name.trim()
+
+            if (temp_name.indexOf("Mega") > 0) {
+                img_name = pokemon[f].id + "-mega" + ".png"
+                if ((temp_name.indexOf(" X") > 0) || (temp_name.indexOf("_X") > 0)) {
+                    img_name = pokemon[f].id + "-mega-x" + ".png"
+                }
+                if ((temp_name.indexOf(" Y") > 0) || (temp_name.indexOf("_Y") > 0)) {
+                    img_name = pokemon[f].id + "-mega-y" + ".png"
+                }
+            } else {
+                img_name = pokemon[f].id + ".png"
+            }
+            let img_loc = "images/pokemon_images/"
+            let iname = document.getElementById("iname")
+            let img_data = img_loc + img_name
+            iname.setAttribute("src", img_data)
+
+            let poke_type = pokemon[f].Type1
+            poke_type = poke_type.toLowerCase()
+            let col = eval("typeColor." + poke_type)
+            let pbg = document.getElementById("poke_card")
+            pbg.style.backgroundColor = col
+
+            let poke_hp = pokemon[f].hp
+            let php = document.getElementById("p_hp")
+            php.innerText = "HP " + poke_hp
+
+            let poke_t1 = pokemon[f].Type1
+            let poke_t2 = pokemon[f].Type2
+            document.getElementById("t1").textContent = poke_t1.trim()
+            if (poke_t2 != "") {
+                document.getElementById("t2").textContent = poke_t2.trim()
+            } else {
+                let tk = document.getElementById("t2")
+                tk.style.visibility = "hidden"
+            }
+
+            let pokename = document.getElementById("p_name")
+            pokename.innerText = pokemon[f].name
+
+            let pdetails = document.getElementById("other_det")
+            pdetails.innerText = ""
+            let adiv = document.createElement("div")
+            adiv.innerText = "Attack: " + pokemon[f].Attack
+            pdetails.appendChild(adiv)
+
+            let ddiv = document.createElement("div")
+            ddiv.innerText = "Defence: " + pokemon[f].Defence
+            pdetails.appendChild(ddiv)
+
+            let spdiv = document.createElement("div")
+            spdiv.innerText = "Sp.Attack: " + pokemon[f].SpAtk
+            pdetails.appendChild(spdiv)
+
+            let sddiv = document.createElement("div")
+            sddiv.innerText = "Sp.Defence: " + pokemon[f].SpDef
+            pdetails.appendChild(sddiv)
+
+            let sediv = document.createElement("div")
+            sediv.innerText = "Speed: " + pokemon[f].Speed
+            pdetails.appendChild(sediv)
+
+            let legend_status = pokemon[f].Legend.toLowerCase()
+            if (legend_status == "true") {
+                let tldiv = document.createElement("div")
+                tldiv.innerText = "Legendary: " + pokemon[f].Legend
+                pdetails.appendChild(tldiv)
+            }
+
+            f = 10000
+            // poke_card.style.visibility = "visible"
+            opa_count = 0
+            let opa_var = setInterval(() => {
+                opa_count += 0.1
+                poke_card.style.opacity = opa_count
+                if (opa_count > 1) {
+                    clearInterval(opa_var)
+                }
+            }, 50);
+
+            let panels = document.getElementById("end_doc")
+            panels.innerHTML = ""
+            let othername = ""
+            let otherimage = ""
+            let otherloc = ""
+            let oname = ""
+            let oimage = ""
+            let pdivs = ""
+
+            let dk = genindex
+            poke_id = poke_pid
+            if (poke_pid >= 0) {
+                for (let d = genindex; d < (genindex + pstagem); d++) {
+                    if (d == genindex) {
+                        pagevisited = "Y"
+                        pagegen = pokemon[d].Gen
+                        nextpage_page_counter = 0
+                        pageindex_start = 0
+                        pageend = 0
+                        pageend_ind = "N"
+                        firstpage = 0
+                    }
+                    othername = ""
+                    otherimage = ""
+                    othername = pokemon[d].name
+                    othername = othername.trim()
+
+                    if (othername.indexOf("Mega") > 0) {
+                        otherimage = pokemon[d].id + "-mega" + ".png"
+                        if ((othername.indexOf(" X") > 0) || (othername.indexOf("_X") > 0)) {
+                            otherimage = pokemon[d].id + "-mega-x" + ".png"
+                        }
+                        if ((othername.indexOf(" Y") > 0) || (othername.indexOf("_Y") > 0)) {
+                            otherimage = pokemon[d].id + "-mega-y" + ".png"
+                        }
+                    } else {
+                        otherimage = pokemon[d].id + ".png"
+                        if (pokemon[d].id == 413) {
+                            if (pokemon[d].Type2 == "Grass") {
+                                otherimage = ""
+                                otherimage = "413-plant" + ".png"
+                            }
+                            if (pokemon[d].Type2 == "Ground") {
+                                otherimage = ""
+                                otherimage = "413-sandy" + ".png"
+                            }
+                            if (pokemon[d].Type2 == "Steel") {
+                                otherimage = ""
+                                otherimage = "413-trash" + ".png"
+                            }
+                        }
+                    }
+
+                    otherloc = ""
+                    otherloc = "images/pokemon_images/" + otherimage
+
+                    oimage = document.createElement("img")
+                    oimage.setAttribute("src", otherloc)
+                    oimage.classList.add("card__image")
+
+                    oname = document.createElement("div")
+                    oname.textContent = othername
+                    oname.classList.add("card__name")
+
+                    pdivs = ""
+                    pdivs = document.createElement("div")
+                    pdivs.setAttribute("data-toggle", "tooltip")
+                    pdivs.addEventListener('mouseover', mouseHover)
+
+                    pdivs.appendChild(oimage)
+                    pdivs.appendChild(oname)
+
+                    panels.appendChild(pdivs)
+                }
+            }
+        }
+    }
 }
